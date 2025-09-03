@@ -1,22 +1,14 @@
 #include <stdio.h>
 #include <string.h>
 
+void print_help(const char *program_name);
 int main(int argc, char *argv[])
 {
     // If the user asks for help, this has the highest priority
     if (argc == 2 && (strcmp(argv[1], "--help") == 0 || strcmp(argv[1], "-h") == 0))
     {
-        printf("Usage: ./hello [OPTION] [NAME]\n");
-        printf("Greets a person in different ways.\n\n");
-        printf("OPTIONS:\n");
-        printf("  (none)\tGreets the provided name.\n");
-        printf("  M | m\t\tAdds the title 'MR.' to the greeting.\n");
-        printf("  F | f\t\tAdds the title 'MS.' to the greeting.\n");
-        printf("  -h, --help\tShows this help message.\n\n");
-        printf("EXAMPLES:\n");
-        printf("  ./hello Michele\n");
-        printf("  ./hello F Maria\n");
-        return 0; // Exits the program after showing the help message
+        print_help(argv[0]);
+        return 0;
     }
 
     if (argc == 1)
@@ -55,4 +47,18 @@ int main(int argc, char *argv[])
     }
 
     return 0;
+}
+
+void print_help(const char *program_name)
+{
+    printf("Usage: %s [OPTION] [NAME]\n", program_name);
+    printf("Greets a person in different ways.\n\n");
+    printf("OPTIONS:\n");
+    printf("  (none)\tGreets the provided name.\n");
+    printf("  M | m\t\tAdds the title 'MR.' to the greeting.\n");
+    printf("  F | f\t\tAdds the title 'MS.' to the greeting.\n");
+    printf("  -h, --help\tShows this help message.\n\n");
+    printf("EXAMPLES:\n");
+    printf("  %s Michael\n", program_name);
+    printf("  %s F Maria\n", program_name);
 }
