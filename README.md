@@ -58,7 +58,7 @@ Provide a name as an argument to get a personalized greeting.
 Output:
 
 ```bash
-Hello Michele!
+Hello Richard!
 ```
 
 **3. Formal Greeting**
