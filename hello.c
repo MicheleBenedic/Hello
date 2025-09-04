@@ -13,18 +13,21 @@ int main(int argc, char *argv[])
 
     if (argc == 1)
     {
-        // Print "Hello World!" if there are no arguments
         printf("Hello World!\n");
     }
-
     else if (argc == 2)
     {
+        // A single argument should be a name. Options like M/F are invalid here.
+        if (strcmp(argv[1], "M") == 0 || strcmp(argv[1], "m") == 0 || strcmp(argv[1], "F") == 0 || strcmp(argv[1], "f") == 0)
+        {
+            fprintf(stderr, "Error: Missing name for option '%s'.\n", argv[1]);
+            fprintf(stderr, "Use '%s --help' for usage instructions.\n", argv[0]);
+            return 1;
+        }
         printf("Hello %s!\n", argv[1]);
     }
-
     else if (argc == 3)
     {
-        // Handle greeting with a title, accepting uppercase and lowercase
         if (strcmp(argv[1], "F") == 0 || strcmp(argv[1], "f") == 0)
         {
             printf("Greetings MS. %s! It's pleasant to meet you!\n", argv[2]);
@@ -35,14 +38,15 @@ int main(int argc, char *argv[])
         }
         else
         {
-            // If the first argument is invalid, greet the second one normally
-            printf("Hello %s! (Option '%s' not recognized)\n", argv[2], argv[1]);
+            fprintf(stderr, "Error: Unrecognized option '%s'.\n", argv[1]);
+            fprintf(stderr, "Use '%s --help' for usage instructions.\n", argv[0]);
+            return 1;
         }
     }
-
     else
     {
-        printf("Invalid arguments. Use './hello --help' to see the instructions.\n");
+        fprintf(stderr, "Error: Invalid number of arguments.\n");
+        fprintf(stderr, "Use '%s --help' for usage instructions.\n", argv[0]);
         return 1;
     }
 

@@ -27,6 +27,10 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS)
 
+# Ricetta per forzare una ricompilazione completa (pulisce e poi compila)
+.PHONY: rebuild
+rebuild: clean all
+
 # Ricetta per pulire la directory dai file generati
 # .PHONY dice a make che "clean" non è un file da creare
 .PHONY: clean

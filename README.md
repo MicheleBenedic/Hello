@@ -13,14 +13,16 @@ A simple command-line program written in C that serves as an introduction to han
 
 ## Prerequisites
 
-To build and run this program, you need a C compiler, such as `gcc`.
+To build and run this program, you need a C toolchain, including `gcc` and `make`.
 
 ## Building
 
-To compile the program, open a terminal in the project directory and run the following command:
+This project uses a `Makefile` to automate the compilation process. Open a terminal in the project directory and use the following commands:
+
+**Compile the program:**
 
 ```bash
-gcc hello.c -o hello
+make
 ```
 
 For a safer compilation that enables warnings for potential issues in the code, it is recommended to use the following flags:
